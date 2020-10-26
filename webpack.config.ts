@@ -1,11 +1,13 @@
-const path = require('path');
-const mode = process.env.NODE_ENV;
-const htmlplugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+import { Configuration } from 'webpack'
+import * as path from 'path';
+import * as Htmlplugin from 'html-webpack-plugin';
+import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import * as CleanWebpackPlugin from 'clean-webpack-plugin';
+import * as OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
-module.exports = {
+const mode = process.env.NODE_ENV as Configuration['mode'] ;
+
+const config: Configuration = {
   mode,
   entry: './src/index.ts',
   output: {
@@ -31,7 +33,7 @@ module.exports = {
       },
       {
         test: /\.(sa|sc|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       }
     ]
   },
@@ -41,8 +43,10 @@ module.exports = {
     }),
     new OptimizeCssAssetsPlugin(),
     new CleanWebpackPlugin(['dist']),
-    new htmlplugin({
+    new Htmlplugin({
       template: 'src/index.html'
     })
-  ]
-};
+  ].filter(Boolean)
+}
+
+export default config
