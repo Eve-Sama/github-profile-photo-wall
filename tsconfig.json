@@ -4,6 +4,8 @@
     "target": "es5",
     "downlevelIteration": true,
     "removeComments": true,
+    "moduleResolution": "node",
+    "types": ["webpack-dev-server"],
     "baseUrl": "."
   }
 }

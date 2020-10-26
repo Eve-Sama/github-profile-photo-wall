@@ -3,7 +3,7 @@
   "description": "A tool that cut a image into 7*n for github's profile",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "start": "webpack serve"
+    "start": "cross-env TS_NODE_PROJECT=\"webpackconfig.json\" webpack serve"
   },
   "repository": {
     "type": "git",
@@ -16,18 +16,24 @@
   },
   "homepage": "https://github.com/Eve-Sama/image-cutter#readme",
   "devDependencies": {
-    "cross-env": "^7.0.2",
-    "sass": "^1.27.0",
+    "@types/mini-css-extract-plugin": "^1.2.0",
     "clean-webpack-plugin": "^1.0.1",
+    "cross-env": "^7.0.2",
     "css-loader": "^5.0.0",
     "html-webpack-plugin": "^4.5.0",
     "mini-css-extract-plugin": "^1.1.1",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "sass": "^1.27.0",
     "sass-loader": "^10.0.3",
     "ts-loader": "^5.3.3",
+    "ts-node": "^9.0.0",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^4.0.0",
     "webpack": "^5.1.3",
     "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "@types/webpack-dev-server": "^3.11.0"
   }
 }
