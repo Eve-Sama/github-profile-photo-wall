@@ -1,5 +1,6 @@
 const path = require('path');
 const mode = process.env.NODE_ENV;
+const isProd = mode === 'production';
 const htmlplugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -31,18 +32,16 @@ module.exports = {
       },
       {
         test: /\.(sa|sc|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        use: [isProd ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'bundle.css'
-    }),
-    new OptimizeCssAssetsPlugin(),
+    isProd && new MiniCssExtractPlugin(),
+    isProd && new OptimizeCssAssetsPlugin(),
     new CleanWebpackPlugin(['dist']),
     new htmlplugin({
       template: 'src/index.html'
     })
-  ]
+  ].filter(Boolean)
 };
