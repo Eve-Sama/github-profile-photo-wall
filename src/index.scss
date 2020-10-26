@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  .before,
+  .valid,
+  .after {
+    flex: 1;
+    overflow: auto;
+  }
+
+  @mixin container {
+    padding-top: 35px;
+    position: relative;
+  }
+
+  @mixin emphasize {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  @mixin title {
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    transform: translate(-50%, 0);
+    @include emphasize;
+  }
+
+  .before {
+    @include container;
+    &::before {
+      @include title;
+      content: 'Original image';
+    }
+  }
+
+  .valid {
+    @include container;
+    &::before {
+      @include title;
+      content: 'Valid size';
+    }
+  }
+  .right {
+    @include emphasize;
+    padding: 0px 20px;
+  }
+}
