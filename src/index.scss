@@ -1,8 +1,7 @@
 .container {
   display: flex;
   .before,
-  .valid,
-  .after {
+  .valid {
     flex: 1;
     overflow: auto;
   }
@@ -43,5 +42,15 @@
   .right {
     @include emphasize;
     padding: 0px 20px;
+  }
+  .after {
+    width: 252px;
+    display: flex;
+    flex-wrap: wrap;
+    img {
+      border-radius: 6px;
+      margin-right: 4px;
+      margin-top: 4px;
+    }
   }
 }
