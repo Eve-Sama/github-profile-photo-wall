@@ -1,3 +1,4 @@
+import { createValidImage } from "./process";
 import { showStep2 } from "./slide";
 
 const image = new Image();
@@ -13,9 +14,8 @@ fileUploader.addEventListener('change', () => {
   reader.onload = function () {
     image.src = this.result as string;
     image.onload = () => {
-      // createValidImage();
-      // cutterImage();
       showStep2();
+      createValidImage();
     };
   };
 });
