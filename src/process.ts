@@ -5,19 +5,19 @@
 import { image } from './step1';
 import { lines } from './step2';
 
-const MaxWidth = 224;
+const MaxWidth = 224; // 32px * 7(columns) = 224px
 const base64List: string[] = [];
 
 /** Copy image to a canvas with valid size */
 function createValidImage(): void {
   const { width: imageWidth, height: imageHeight } = image;
   const canvas = document.createElement('canvas');
+  const maxHeight = lines * 32;
   // Calculate the size of the image by 32 times.
-  const maxHeight = imageHeight % 32 === 0 ? imageHeight : 32 * (~~(imageHeight / 32) + 1);
   canvas.width = MaxWidth;
   canvas.height = maxHeight;
   const ctx = canvas.getContext('2d');
-  ctx.drawImage(image, 0, 0, imageWidth, imageHeight, 0, 0, MaxWidth, lines * 32);
+  ctx.drawImage(image, 0, 0, imageWidth, imageHeight, 0, 0, MaxWidth, maxHeight);
   cutterImage(canvas);
 }
 
