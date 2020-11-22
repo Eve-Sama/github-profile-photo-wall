@@ -1,11 +1,11 @@
-import { Configuration } from 'webpack'
+import { Configuration } from 'webpack';
 import * as path from 'path';
 import * as Htmlplugin from 'html-webpack-plugin';
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import * as CleanWebpackPlugin from 'clean-webpack-plugin';
 import * as OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
-const mode = process.env.NODE_ENV as Configuration['mode'] ;
+const mode = process.env.NODE_ENV as Configuration['mode'];
 const isProd = mode === 'production';
 
 const config: Configuration = {
@@ -38,6 +38,9 @@ const config: Configuration = {
       }
     ]
   },
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
   plugins: [
     isProd && new MiniCssExtractPlugin(),
     isProd && new OptimizeCssAssetsPlugin(),
@@ -46,6 +49,6 @@ const config: Configuration = {
       template: 'src/index.html'
     })
   ].filter(Boolean)
-}
+};
 
-export default config
+export default config;

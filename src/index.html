@@ -8,21 +8,64 @@
 </head>
 
 <body>
-  <img id="image" src="" />
-  <br />
-  <input type="file" id="uploader" />
-  <br />
-  <div id="container">
-    <div class="before">
-      <img id="before-image">
+  <section id="step-1">
+    <div class="title">(1/3) Upload a image</div>
+    <div class="desc">Please select a iamge that you like</div>
+    <div class="content">
+      <input type="file" id="uploader" accept="image/png,image/jpg,image/jpeg"/>
     </div>
-    <div class="right">=></div>
-    <div class="valid">
-      <canvas id="valid-canvas"></canvas>
+  </section>
+  <section id="step-2">
+    <div class="title">(2/3) Confirm config</div>
+    <div class="desc">Please setting the lines that you want to generate</div>
+    <div class="content">
+      <div class="tip">
+        <p>
+          Because each organization of GitHub is 32px * 32px, and a row can hold 7 organizations at most, so it must be
+          7 columns. The width of the appropriate image size should be 224px. As for the height, it should be a multiple
+          of 32px. In order to adapt to this requirement, the project will make some changes to the size of your
+          uploaded image, adjust the width to 224px by stretching / shrinking, while the height will stretch / shrink
+          depending on how many lines you want to generate.
+        </p>
+      </div>
+      <div class="settings">
+        <div>
+          <span>Number of lines: </span>
+          <button id="minus" type="button">-</button>
+          <span id="lines" class="config-value">7</span>
+          <button id="plus" type="button">+</button>
+        </div>
+        <div>
+          <span>Number of columns: </span>
+          <span class="config-value">7</span>
+        </div>
+      </div>
     </div>
-    <div class="right">=></div>
-    <div class="after"></div>
-  </div>
+  </section>
+  <section id="step-3">
+    <div class="title">(3/3) Surprise</div>
+    <div class="desc">Now you can crate organizations and use below images as avatar</div>
+    <div class="content">
+      step-3
+    </div>
+  </section>
+
 </body>
 
 </html>
+
+<!-- <img id="image" src="" />
+<br />
+<input type="file" id="uploader" />
+<br />
+<div id="container">
+  <div class="before">
+    <img id="before-image">
+  </div>
+  <div class="right">=></div>
+  <div class="valid">
+    <canvas id="valid-canvas"></canvas>
+  </div>
+  <div class="right">=></div>
+  <div class="after"></div>
+</div> -->
