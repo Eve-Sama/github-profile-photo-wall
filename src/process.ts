@@ -6,7 +6,8 @@ import { image } from './step1';
 import { lines } from './step2';
 
 const MaxWidth = 224; // 32px * 7(columns) = 224px
-const base64List: string[] = [];
+
+let base64List: string[] = [];
 
 /** Copy image to a canvas with valid size */
 function createValidImage(): void {
@@ -25,6 +26,7 @@ function cutterImage(canvas: HTMLCanvasElement): void {
   document.querySelector('#result').innerHTML = ''; // Clear images
   const ctx = canvas.getContext('2d');
   const nums = (canvas.height / 32) * 7;
+  base64List = [];
   Array(nums)
     .fill(undefined)
     .forEach((_, index) => {
@@ -63,4 +65,4 @@ function getImageDataBase64(data: ImageData): string {
   return canvas.toDataURL();
 }
 
-export { createValidImage };
+export { createValidImage, base64List };
