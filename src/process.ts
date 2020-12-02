@@ -48,8 +48,8 @@ function createImgaeUnit(row: number, column: number, ctx: CanvasRenderingContex
   const image = document.createElement('img');
   image.src = base64;
   base64List.push(base64);
-  const resultSection = document.querySelector('#result');
-  resultSection.appendChild(image);
+  const resultSectionElm = document.querySelector('#result');
+  resultSectionElm.appendChild(image);
 }
 
 /**

@@ -2,11 +2,11 @@ import { createValidImage } from "./process";
 import { showStep2 } from "./slide";
 
 const image = new Image();
-const fileUploader = document.querySelector('#uploader') as HTMLInputElement;
+const fileUploaderElm = document.querySelector('#uploader') as HTMLInputElement;
 
-fileUploader.addEventListener('change', () => {
+fileUploaderElm.addEventListener('change', () => {
   const reader = new FileReader();
-  const files = fileUploader.files;
+  const files = fileUploaderElm.files;
   if (files.length === 0) {
     return;
   }
