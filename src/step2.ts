@@ -36,5 +36,4 @@ backElm.addEventListener('click', () => {
   showStep1();
 });
 
-
 export { lines };
