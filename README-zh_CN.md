@@ -28,7 +28,7 @@
 
 ![organization setting](https://file.qingflow.com/uploads/file/2d82c393-1d79-4829-bd50-dc1082cb8c52.png)
 
-对步骤还是不理解的, 可以看这篇 [文章](https://zhuanlan.zhihu.com/p/328903644)的详述.
+对步骤还是不理解的, 可以看这篇 [文章](https://zhuanlan.zhihu.com/p/328903644) 的详述.
 
 ## 前端开发交流群
 
