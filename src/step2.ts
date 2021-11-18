@@ -4,15 +4,18 @@ import * as JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import { showStep1 } from './slide';
 
-const minusBtnElm = document.querySelector('#minus');
-const plusBtnElm = document.querySelector('#plus');
+
+let lines = 8;
+let columns = 8;
+
+// #region 为行列增减添加事件
+const lineMinusBtnElm = document.querySelector('#line-minus');
+const linePlusBtnElm = document.querySelector('#line-plus');
+const columnMinusBtnElm = document.querySelector('#column-minus');
+const columnPlusBtnElm = document.querySelector('#column-plus');
 const linesValueElm = document.querySelector('#lines');
-const downloadElm = document.querySelector('#download');
-const backElm = document.querySelector('#back');
-
-let lines = 7;
-
-minusBtnElm.addEventListener('click', () => {
+const columnsValueElm = document.querySelector('#columns');
+lineMinusBtnElm.addEventListener('click', () => {
   if (lines === 1) {
     alert('At least one line is required');
   } else {
@@ -20,12 +23,27 @@ minusBtnElm.addEventListener('click', () => {
     createValidImage();
   }
 });
+columnMinusBtnElm.addEventListener('click', () => {
+  if (columns === 1) {
+    alert('At least one line is required');
+  } else {
+    columnsValueElm.innerHTML = `${--columns}`;
+    createValidImage();
+  }
+});
 
-plusBtnElm.addEventListener('click', () => {
+linePlusBtnElm.addEventListener('click', () => {
   linesValueElm.innerHTML = `${++lines}`;
   createValidImage();
 });
+columnPlusBtnElm.addEventListener('click', () => {
+  columnsValueElm.innerHTML = `${++columns}`;
+  createValidImage();
+});
+// #endregion
 
+const downloadElm = document.querySelector('#download');
+const backElm = document.querySelector('#back');
 downloadElm.addEventListener('click', () => {
   var zip = new JSZip();
   base64List.forEach((value, index) => zip.file(`image-${index + 1}.png`, base64ToBlob(value), { base64: true }));
@@ -36,4 +54,4 @@ backElm.addEventListener('click', () => {
   showStep1();
 });
 
-export { lines };
+export { lines, columns };
