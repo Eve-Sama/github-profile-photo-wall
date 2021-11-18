@@ -2,7 +2,6 @@ import { base64List, createValidImage } from './process';
 import { base64ToBlob } from './utils';
 import * as JSZip from 'jszip';
 import { saveAs } from 'file-saver';
-import { showStep1 } from './slide';
 
 
 let lines = 8;
@@ -25,7 +24,7 @@ lineMinusBtnElm.addEventListener('click', () => {
 });
 columnMinusBtnElm.addEventListener('click', () => {
   if (columns === 1) {
-    alert('At least one line is required');
+    alert('At least one column is required');
   } else {
     columnsValueElm.innerHTML = `${--columns}`;
     createValidImage();
@@ -43,15 +42,25 @@ columnPlusBtnElm.addEventListener('click', () => {
 // #endregion
 
 const downloadElm = document.querySelector('#download');
-const backElm = document.querySelector('#back');
 downloadElm.addEventListener('click', () => {
   var zip = new JSZip();
   base64List.forEach((value, index) => zip.file(`image-${index + 1}.png`, base64ToBlob(value), { base64: true }));
   zip.generateAsync({ type: 'blob' }).then(content => saveAs(content, 'image-cutter-result.zip'));
 });
 
-backElm.addEventListener('click', () => {
-  showStep1();
-});
+const fileUploaderElm = document.querySelector('#uploader-again') as HTMLInputElement;
 
+fileUploaderElm.addEventListener('change', () => {
+  const reader = new FileReader();
+  const files = fileUploaderElm.files;
+  if (files.length === 0) {
+    return;
+  }
+  reader.readAsDataURL(files[0]);
+  reader.onload = function () {
+    const image = new Image();
+    image.src = this.result as string;
+    image.onload = () => createValidImage(image);
+  };
+});
 export { lines, columns };

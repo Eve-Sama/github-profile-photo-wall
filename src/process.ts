@@ -2,15 +2,16 @@
  * This file is used to convert a image to images contains x lines with y columns.
  */
 
-import { image } from './step1';
 import { columns, lines } from './step2';
 
 const unitSize = 32; // 每个小单元的图片大小是32px * 32px
 let base64List: string[] = [];
 
+let globalImage: HTMLImageElement;
 /** Copy image to a canvas with valid size */
-function createValidImage(): void {
-  const { width: imageWidth, height: imageHeight } = image;
+function createValidImage(image?: HTMLImageElement): void {
+  globalImage = image || globalImage;
+  const { width: imageWidth, height: imageHeight } = globalImage;
   const canvas = document.createElement('canvas');
   const maxHeight = lines * unitSize;
   // Calculate the size of the image by 32 times.
@@ -18,7 +19,7 @@ function createValidImage(): void {
   canvas.width = MaxWidth;
   canvas.height = maxHeight;
   const ctx = canvas.getContext('2d');
-  ctx.drawImage(image, 0, 0, imageWidth, imageHeight, 0, 0, MaxWidth, maxHeight);
+  ctx.drawImage(globalImage, 0, 0, imageWidth, imageHeight, 0, 0, MaxWidth, maxHeight);
   cutterImage(canvas);
 }
 
