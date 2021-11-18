@@ -7,5 +7,10 @@
     "moduleResolution": "node",
     "types": ["webpack-dev-server"],
     "baseUrl": "."
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 }

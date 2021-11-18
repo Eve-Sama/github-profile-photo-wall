@@ -2,8 +2,8 @@
   "name": "image-cutter",
   "description": "A tool that cut a image into n*7 for github's profile",
   "scripts": {
-    "build": "cross-env TS_NODE_PROJECT=\"webpack.config.json\" NODE_ENV=production webpack",
-    "start": "cross-env TS_NODE_PROJECT=\"webpack.config.json\" NODE_ENV=development webpack serve"
+    "build": "cross-env NODE_ENV=production webpack",
+    "start": "cross-env NODE_ENV=development webpack serve"
   },
   "repository": {
     "type": "git",
